@@ -1,0 +1,26 @@
+<j:jelly xmlns:j="jelly:core">
+    <j:if test="${from.hasTweets()}">
+        <div align="right">
+            <div class="test-trend-caption">Twitter Timeline</div>
+            <style>
+                .tweets{text-align:left}
+                .tweet{background: rgb(245,245,245); padding:10px; margin-bottom: 5px; position:relative; width:500px}
+                .tweet img{float:left; margin-right:10px}
+                .tweet h1{font-size:120%}
+                .tweet .tweet-time{position:absolute;right:10px; top: 10px;}
+            </style>
+            <div class="tweets">
+                <j:forEach var="tweet" items="${from.tweets}">
+                    <div class="tweet">
+                        <img src="${tweet.user.profileImageURL}"/>
+                        <div>
+                            <h1>@${tweet.user.name}</h1>
+                            ${tweet.text}
+                        </div>
+                        <div class="tweet-time">${tweet.dateCreated}</div>
+                    </div>
+                </j:forEach>
+            </div>
+        </div>
+    </j:if>
+</j:jelly>
